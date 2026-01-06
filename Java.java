@@ -318,8 +318,35 @@ public class Java {
     }
   }
 
+  // Linear Search in Array
+  public static int linearSearch(int numbers[], int key) {
+
+    for (int i = 0; i <= numbers.length; i++) {
+      if (numbers[i] == key) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  // Largest in Array
+  public static void largestNum(int numbers[]) {
+    int largest = Integer.MIN_VALUE;
+
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] > largest) {
+        largest = numbers[i];
+      }
+    }
+    System.out.println("Largest Number : " + largest);
+  }
+
   public static void main(String[] args) {
 
-    DiamondPattern();
+    int array[] = { 1, 2, 4, 5, 12, 34, 55, 6, 6, 6, 6, 65, 4, 6, 7, 8 };
+
+    largestNum(array);
+
   }
 }
