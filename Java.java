@@ -379,17 +379,27 @@ public class Java {
       numbers[i] = numbers[end]; // numbers[0] = numbers[7]
       numbers[end] = temp;
       end--;
-      // System.out.println(Arrays.toString(numbers));
+
     }
 
     System.out.println(Arrays.toString(numbers));
   }
 
+  // Possible pairs of the array
+  public static void PossiblePairs(int numbers[]) {
+    for (int i = 0; i <= numbers.length - 1; i++) {
+      for (int j = i + 1; j <= numbers.length - 1; j++) {
+        System.out.print("( " + numbers[i] + "," + numbers[j] + " )" + " ");
+      }
+      System.out.println();
+    }
+  }
+
   public static void main(String[] args) {
 
     int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 65 };
+    int aray[] = { 2, 4, 6, 8, 10 };
 
-    ReverseArray(array);
-
+    PossiblePairs(aray);
   }
 }
