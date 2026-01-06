@@ -331,7 +331,7 @@ public class Java {
   }
 
   // Largest in Array
-  public static void largestNum(int numbers[]) {
+  public static void largestNum(int numbers[], int key) {
     int largest = Integer.MIN_VALUE;
 
     for (int i = 0; i < numbers.length; i++) {
@@ -342,11 +342,54 @@ public class Java {
     System.out.println("Largest Number : " + largest);
   }
 
+  // Binary Search Code
+  public static void binarySearch(int numbers[], int key) {
+    int starts = 0;
+    int end = numbers.length - 1;
+    int mid = numbers.length / 2;
+
+    while (starts > end) {
+      if (numbers[mid] == key) {
+        System.out.print("Key found at index " + mid);
+      } else if (numbers[mid] > key) {
+        starts = mid + 1;
+      } else {
+        end = mid - 1;
+      }
+      starts++;
+    }
+
+    for (starts++; starts <= end; starts++) {
+      if (numbers[starts] == key) {
+        System.out.println("Key found at index : " + starts);
+      } else {
+        System.out.println("Key not found");
+        break;
+      }
+    }
+
+  }
+
+  // Reverse the array
+  public static void ReverseArray(int numbers[]) {
+    int temp = 0;
+    int end = numbers.length - 1;
+    for (int i = 0; i < 4; i++) { // 0 1 2 3 4
+      temp = numbers[i];
+      numbers[i] = numbers[end]; // numbers[0] = numbers[7]
+      numbers[end] = temp;
+      end--;
+      // System.out.println(Arrays.toString(numbers));
+    }
+
+    System.out.println(Arrays.toString(numbers));
+  }
+
   public static void main(String[] args) {
 
-    int array[] = { 1, 2, 4, 5, 12, 34, 55, 6, 6, 6, 6, 65, 4, 6, 7, 8 };
+    int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 65 };
 
-    largestNum(array);
+    ReverseArray(array);
 
   }
 }
