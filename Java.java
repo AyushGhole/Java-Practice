@@ -1,0 +1,211 @@
+import java.util.*;
+
+// Main Java class
+public class Java {
+
+  // IsPrime
+  public static Boolean isPrime(int a) {
+    // check the condition
+    if (a % 2 == 0) { // Check for the not prime number
+      return false;
+    } else { // else condition for the prime
+      return true;
+    }
+  }
+
+  // Check Prime function
+  public static void checkPrime(int a) {
+    for (int i = 1; i <= a; i++) {
+      if (isPrime(i)) {
+        System.out.print(i + " ");
+      }
+    }
+  }
+
+  // Decimal to Binary Number
+  public static void BinToDeci(int BinNumber) {
+    int pow = 0;
+    int decNum = 0;
+    int myDecimal = BinNumber;
+    while (BinNumber > 0) {
+      int lastDigit = BinNumber % 10;
+      decNum = decNum + (int) (lastDigit * Math.pow(2, pow));
+
+      pow++;
+      BinNumber = BinNumber / 10;
+    }
+
+    System.out.println("Decimal Number of " + myDecimal + " = " + decNum);
+  }
+
+  // Function for Decimal to Binary
+  public static void DecToBin(int n) {
+    int myDecimal = n;
+    int BinNumber = 0;
+    while (n > 0) {
+      int pow = 0;
+      n = n % 2;
+      int lastNumber = 0;
+      BinNumber = lastNumber + (int) (n * Math.pow(10, pow));
+      pow++;
+      n = n / 2;
+    }
+    System.out.println(BinNumber);
+  }
+
+  // Calculate average function
+  public static void calculateAvg(double a, double b, double c) {
+    double avg = (a + b + c) / 3;
+    System.out.println("Average of the numbers " + a + ", " + b + ", " + c + " = " + avg);
+  }
+
+  // Method to check Even
+  public static Boolean checkEven(int a) {
+    if (a % 2 == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // Palindrome Function
+  public static void checkPalindrom(int a) {
+    int num = 0;
+    int original = a;
+    while (a > 0) {
+      int pow = 0;
+      num = (num * 10) + (int) ((a % 10) * Math.pow(10, pow));
+
+      pow++;
+      a = a / 10;
+    }
+
+    if (num == original) {
+      System.out.println(original + " is a Palindrome");
+    } else {
+      System.out.println(original + " is not a Palindrome");
+    }
+
+  }
+
+  // To find the sum of the digits
+  public static void sum(int n) {
+    int sum = 0;
+    while (n > 0) {
+      int pow = 0;
+      int lastDigit = (int) ((n % 10) * Math.pow(10, pow));
+      sum = sum + lastDigit;
+      pow++;
+      n = n / 10;
+    }
+    System.out.println("Sum is " + sum);
+  }
+
+  // Print Hollow Rectangular Matrix
+  public static void Pattern() {
+    for (int i = 1; i < 5; i++) {
+      for (int j = 1; j < 6; j++) {
+        if ((i == 2 && j == 2) || (i == 3 && j == 3) || (i == 3 && j == 2) || (i == 2 && j == 3) || (i == 2 && j == 4)
+            || (i == 3 && j == 4)) {
+          System.out.print("  ");
+        } else {
+          System.out.print("* ");
+        }
+      }
+      System.out.println();
+    }
+  }
+
+  // Inverted & Rotated Half - Pyramid/Numberic as well as * patttern
+  public static void RotatedHalf() {
+    for (int i = 1; i < 6; i++) {
+      for (int j = 1; j < 6; j++) {
+        if (j == 1 || (i == 2 && j < 5) || (i == 3 && j < 4) || (i == 4 && j < 3) || i == 1) {
+          System.out.print(j + " ");
+        } else {
+          System.out.print("  ");
+        }
+
+      }
+      System.out.println();
+    }
+  }
+
+  // Floyd's Triangle
+  public static void Floyds() {
+    int count = 2;
+
+    for (int i = 1; i < 6; i++) {
+      for (int j = 1; j < 6; j++) {
+
+        if ((i == 1 && j == 1)) {
+          System.out.print(i);
+          break;
+        } else if (i == 2 && j < 3) {
+          System.out.print(count + " ");
+          count++;
+        } else if (i == 3 && j < 4) {
+          System.out.print(count + " ");
+          count++;
+        } else if (i == 4 && j < 5) {
+          System.out.print(count + " ");
+          count++;
+        } else if (i == 5) {
+          System.out.print(count + " ");
+          count++;
+        }
+      }
+      System.out.println();
+    }
+  }
+
+  // 0 - 1 Triangle
+  public static void ZeroOneTriangle() {
+    int count = 1;
+    for (int i = 1; i < 6; i++) {
+      for (int j = 1; j < 6; j++) {
+        if (i == 1 && j == 1) {
+          System.out.print(count + " ");
+          count--;
+        } else if (i == 2 && j < 3) {
+          System.out.print(count + " ");
+          count++;
+        } else if (i == 3 && j < 4) {
+          if (i == 3 && j == 3) {
+            count = count + 1;
+            System.out.print(count + " ");
+          } else {
+            count--;
+            System.out.print(count + " ");
+          }
+        } else if (i == 4 && j < 5) {
+          if (i == 4 && j == 3) {
+            count = count - 3;
+            System.out.print(count + " ");
+            count += 2;
+          } else {
+            count--;
+            System.out.print(count + " ");
+            count += 2;
+          }
+        } else if (i == 5) {
+          if (count == 3) {
+            count = count - 3;
+          }
+          count++;
+          System.out.print(count + " ");
+          if (count == 1) {
+            count -= 2;
+          }
+        }
+
+      }
+      System.out.println();
+    }
+  }
+
+  public static void main(String[] args) {
+
+    ZeroOneTriangle();
+  }
+}
