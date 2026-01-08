@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.Arrays;
 import java.util.Collections;
@@ -520,6 +521,75 @@ public class Java {
     System.out.println(Arrays.toString(numbers));
   }
 
+  // Practice Bubble sort
+  public static void bubbleSortPractice(int numbers[]) {
+    for (int turns = 0; turns < numbers.length - 1; turns++) {
+      for (int j = 0; j < numbers.length - 1 - turns; j++) {
+        if (numbers[j] > numbers[j + 1]) {
+          int temp = numbers[j];
+          numbers[j] = numbers[j + 1];
+          numbers[j + 1] = temp;
+        }
+      }
+    }
+    System.out.println(Arrays.toString(numbers));
+  }
+
+  // practice selection sort
+  public static void SelectSort(int numbers[]) {
+    for (int i = 0; i < numbers.length - 1; i++) {
+      int minpos = i;
+      for (int j = i + 1; j < numbers.length; j++) {
+        if (numbers[minpos] > numbers[j]) {
+          minpos = j;
+        }
+      }
+
+      int temp = numbers[i];
+      numbers[i] = numbers[minpos];
+      numbers[minpos] = temp;
+    }
+    System.out.println(Arrays.toString(numbers));
+  }
+
+  // practice insertion sort
+  public static void insertSort(int numbers[]) {
+    for (int i = 1; i < numbers.length; i++) {
+      int curr = numbers[i];
+      int prev = i - 1;
+      while (prev >= 0 && numbers[prev] > curr) {
+        numbers[prev + 1] = numbers[prev];
+        prev--;
+      }
+
+      numbers[prev + 1] = curr;
+    }
+    System.out.println(Arrays.toString(numbers));
+  }
+
+  // Count Sort
+  public static void countingSort(int numbers[]) {
+    int largest = Integer.MIN_VALUE;
+    for (int i = 0; i < numbers.length; i++) {
+      largest = Math.max(largest, numbers[i]);
+    }
+
+    int count[] = new int[largest + 1];
+    for (int i = 0; i < numbers.length; i++) {
+      count[numbers[i]]++;
+
+    }
+
+    int j = 0;
+    for (int i = 0; i < count.length; i++) {
+      numbers[j] = i;
+      j++;
+      count[i]++;
+    }
+
+    System.out.println(Arrays.toString(numbers));
+  }
+
   public static void main(String[] args) {
 
     int array[] = { 5, 8, 9, 12, 10, 45, 77 };
@@ -528,6 +598,6 @@ public class Java {
     // selectionSort(array);
     // printArray(array);
     // insertionSort(numbers);
-    countSort(numbers);
+    countingSort(numbers);
   }
 }
