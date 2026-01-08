@@ -395,11 +395,30 @@ public class Java {
     }
   }
 
+  // bubble sort
+  public static void BubbleSort(int numbers[]) {
+    for (int turns = 0; turns < numbers.length - 1; turns++) { // Track the turns
+      for (int j = 0; j < numbers.length - 1 - turns; j++) { // Track the numbers
+        if (numbers[j] > numbers[j + 1]) {
+          int temp = numbers[j];
+          numbers[j] = numbers[j + 1];
+          numbers[j + 1] = temp;
+        }
+      }
+    }
+  }
+
+  public static void printArray(int numbers[]) {
+    for (int i = 0; i < numbers.length; i++) {
+      System.out.print(numbers[i] + " ");
+    }
+  }
+
   public static void main(String[] args) {
 
-    int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 65 };
-    int aray[] = { 2, 4, 6, 8, 10 };
+    int array[] = { 5, 8, 9, 12, 10, 45, 77 };
 
-    PossiblePairs(aray);
+    BubbleSort(array);
+    printArray(array);
   }
 }
