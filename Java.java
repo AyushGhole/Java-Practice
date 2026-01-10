@@ -708,6 +708,20 @@ public class Java {
     System.out.println("Number of times " + key + " occurs : " + count);
   }
 
+  // print sum
+  public static void printsum(int array[][]) {
+    int sum = 0;
+    for (int i = 0; i < array.length; i++) {
+      for (int j = 0; j < array[0].length; j++) {
+        if (i == 1) {
+          sum += array[i][j];
+        }
+      }
+    }
+
+    System.out.println("Sum : " + sum);
+  }
+
   public static void main(String[] args) {
     int matrix[][] = {
         { 1, 2, 3, 4 },
@@ -717,12 +731,13 @@ public class Java {
     };
 
     int[][] array = {
-        { 4, 7, 8 },
-        { 8, 8, 7 }
+        { 1, 4, 9 },
+        { 11, 4, 3 },
+        { 2, 2, 3 }
     };
 
     int key = 8;
 
-    printNumber(array, key);
+    printsum(array);
   }
 }
