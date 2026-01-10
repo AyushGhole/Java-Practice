@@ -722,6 +722,29 @@ public class Java {
     System.out.println("Sum : " + sum);
   }
 
+  // print transpose
+  public static void printTranspose(int array[][]) {
+    int m = array.length;
+    int n = array[0].length;
+
+    int trans[][] = new int[n][m];
+
+    for (int i = 0; i <= m - 1; i++) {
+      for (int j = 0; j <= n - 1; j++) {
+        // trans[1][0] = array[1][0],
+        trans[j][i] = array[i][j];
+      }
+    }
+
+    for (int i = 0; i <= trans.length - 1; i++) {
+      for (int j = 0; j <= trans[0].length - 1; j++) {
+        System.out.print(trans[i][j] + " ");
+      }
+      System.out.println();
+    }
+
+  }
+
   public static void main(String[] args) {
     int matrix[][] = {
         { 1, 2, 3, 4 },
@@ -732,12 +755,11 @@ public class Java {
 
     int[][] array = {
         { 1, 4, 9 },
-        { 11, 4, 3 },
-        { 2, 2, 3 }
+        { 11, 4, 3 }
     };
 
     int key = 8;
 
-    printsum(array);
+    printTranspose(array);
   }
 }
