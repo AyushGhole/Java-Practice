@@ -694,6 +694,20 @@ public class Java {
 
   }
 
+  // print number of 7's
+  public static void printNumber(int array[][], int key) {
+    int count = 0;
+    for (int i = 0; i < array.length; i++) {
+      for (int j = 0; j < array[0].length; j++) {
+        if (array[i][j] == key) {
+          count++;
+        }
+      }
+    }
+
+    System.out.println("Number of times " + key + " occurs : " + count);
+  }
+
   public static void main(String[] args) {
     int matrix[][] = {
         { 1, 2, 3, 4 },
@@ -702,8 +716,13 @@ public class Java {
         { 13, 14, 15, 16 },
     };
 
-    int key = 26;
+    int[][] array = {
+        { 4, 7, 8 },
+        { 8, 8, 7 }
+    };
 
-    searchKey(matrix, key);
+    int key = 8;
+
+    printNumber(array, key);
   }
 }
