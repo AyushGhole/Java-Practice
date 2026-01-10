@@ -1,7 +1,5 @@
 import java.lang.reflect.Array;
 import java.util.*;
-import java.util.Arrays;
-import java.util.Collections;
 
 // Main Java class
 public class Java {
@@ -590,14 +588,122 @@ public class Java {
     System.out.println(Arrays.toString(numbers));
   }
 
+  // 2D Matrix
+  public static void twoDimensionaArray() {
+    int martix[][] = new int[3][3];
+    int m = martix.length, n = martix[0].length;
+    Scanner sc = new Scanner(System.in);
+
+    // Input Field
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        martix[i][j] = sc.nextInt();
+      }
+    }
+
+    // Output field
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        System.out.print(martix[i][j] + " ");
+      }
+      System.out.println();
+    }
+  }
+
+  // Print Spiral Bound
+  public static void printSpiral(int matrix[][]) {
+    int startRow = 0;
+    int startCol = 0;
+    int endRow = matrix.length - 1;
+    int endCol = matrix[0].length - 1;
+
+    while (startRow <= endRow && startCol <= endCol) {
+
+      // top
+      for (int j = startCol; j <= endCol; j++) {
+        System.out.print(matrix[startRow][j] + " ");
+      }
+
+      // right
+      for (int i = startRow + 1; i <= endRow; i++) {
+        System.out.print(matrix[i][endCol] + " ");
+      }
+
+      // bottom
+      for (int j = endCol - 1; j >= startCol; j--) {
+        if (startRow == endRow)
+          break;
+        System.out.print(matrix[endRow][j] + " ");
+      }
+
+      // left
+      for (int i = endRow - 1; i >= startRow + 1; i--) {
+        if (startCol == endCol)
+          break;
+        System.out.print(matrix[i][startCol] + " ");
+      }
+
+      startRow++;
+      startCol++;
+      endRow--;
+      endCol--;
+    }
+    System.out.println();
+  }
+
+  // Diagonal Sum of the 2D Array
+  public static void printDiagonalSum(int matrix[][]) {
+    int sumRight = 0, sumleft = 0;
+
+    // left Diagonal
+    for (int i = 0; i <= matrix.length - 1; i++) {
+      for (int j = 0; j <= matrix[0].length - 1; j++) {
+        if (i == j) {
+          sumRight = sumRight + matrix[i][j];
+        }
+      }
+    }
+
+    // Right diagonal
+    for (int i = 0; i <= matrix.length - 1; i++) {
+      for (int j = matrix[0].length - 1; j >= 0; j--) {
+        if (i + j == matrix[0].length - 1) {
+          sumleft = sumleft + matrix[i][j];
+        }
+      }
+    }
+
+    System.out.println("Sum : " + (sumRight + sumleft));
+  }
+
+  // Find in the sorted Array
+  public static boolean searchKey(int matrix[][], int key) {
+    int row = 0, col = matrix[0].length - 1;
+    while (row < matrix.length && col >= 0) {
+      if (matrix[row][col] == key) {
+        System.out.println("Key found at " + "( " + row + " , " + col + " )");
+        return true;
+      } else if (key < matrix[row][col]) {
+        col--;
+      } else if (key > matrix[row][col]) {
+        row++;
+      }
+    }
+    System.out.println("Key not found ");
+    return false;
+
+  }
+
   public static void main(String[] args) {
+    int matrix[][] = {
+        { 1, 2, 3, 4 },
+        { 5, 6, 7, 8 },
+        { 9, 10, 11, 12 },
+        { 13, 14, 15, 16 },
+    };
 
-    int array[] = { 5, 8, 9, 12, 10, 45, 77 };
-    int numbers[] = { 3, 6, 2, 1, 8, 7, 4, 5, 3, 1 };
+    int key = 26;
 
-    // selectionSort(array);
-    // printArray(array);
-    // insertionSort(numbers);
-    countingSort(numbers);
+    searchKey(matrix, key);
   }
 }
