@@ -4,7 +4,6 @@ import java.util.*;
 public class DSAPractice {
 
   // ARRAY DAY - 1
-
   // Majority Elements
   public static void majorityElements(int numbers[]) {
     int count = 1, maxNum = 0, checkCount = 0;
@@ -135,14 +134,47 @@ public class DSAPractice {
     System.out.println("Output : " + output);
   }
 
+  // ARRAY DAY - 2
+  // Kadden's Algorithm
+  public static void MaxSubArraySum() {
+    int nums[] = { 5, 4, -1, 7, 8 };
+    int currSum = 0, maxSum = Integer.MIN_VALUE;
+    for (int i = 0; i < nums.length; i++) {
+      currSum = currSum + nums[i];
+      if (currSum < 0) {
+        currSum = 0;
+      }
+      if (maxSum < currSum) {
+        maxSum = currSum;
+      }
+    }
+
+    System.out.println("Maximum SubArrays Sum : " + maxSum);
+
+  }
+
+  // Search the target in the 2D arrays
+  public static boolean searchElement(int nums[][], int target) {
+    int i = 0;
+    int j = nums[0].length - 1;
+    while (i <= nums.length - 1 && j >= 0) {
+      if (target == nums[i][j]) {
+        // System.out.println("Found at index : ( " + i + " , " + j + " )");
+        return true;
+      } else if (target < nums[i][j]) {
+        j--;
+      } else if (target > nums[i][j]) {
+        i++;
+      } else {
+        System.out.println("Not Found");
+      }
+    }
+    return false;
+  }
+
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    System.out.print("Enter the number : ");
-    double num = sc.nextDouble();
-    System.out.print("Enter the power : ");
-    double pow = sc.nextDouble();
-
-    calPower(num, pow);
-
+    int nums[][] = { { 1, 3, 5, 7 }, { 10, 11, 16, 20 }, { 23, 30, 34, 60 } };
+    int target = 13;
+    System.out.println(searchElement(nums, target));
   }
 }
