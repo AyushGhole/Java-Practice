@@ -269,10 +269,37 @@ public class DSAPractice {
     return maxArea;
   }
 
+  // practise
+  public static boolean practise(int nums[]) {
+    int sum = 0;
+    for (int i = 0; i < nums.length; i++) {
+      if (i > 0 && nums[i] == nums[i - 1]) {
+        continue;
+      }
+
+      for (int j = i + 1; j < nums.length; j++) {
+        for (int k = j + 1; k < nums.length; k++) {
+          sum = nums[i] + nums[j] + nums[k];
+          if (sum == 0) {
+            System.out.println("( " + nums[i] + " , " + nums[j] + " , " + nums[k] + " )");
+
+            while (j + 1 < nums.length && nums[j] == nums[j + 1])
+              j++;
+
+            while (k + 1 < nums.length && nums[k] == nums[k + 1])
+              k++;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
   public static void main(String[] args) {
     int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
-
-    // Arrays.sort(nums);
-    System.out.println(maxArar(height));
+    int nums[] = { 2, 0, 2, 1, 1, 0 };
+    Arrays.sort(nums);
+    tripletSum(nums);
+    practise(nums);
   }
 }
