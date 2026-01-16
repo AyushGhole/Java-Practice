@@ -172,9 +172,107 @@ public class DSAPractice {
     return false;
   }
 
+  // Sorting the arrays
+  public static void SortArrays(int nums[]) {
+
+    for (int i = 0; i < nums.length; i++) {
+      for (int j = i + 1; j < nums.length; j++) {
+        if (nums[i] > nums[j]) {
+          int temp = nums[j];
+          nums[j] = nums[i];
+          nums[i] = temp;
+        }
+      }
+    }
+
+    System.out.println("Sorted Arrays : " + Arrays.toString(nums));
+
+  }
+
+  // Sum of the 3 triplets/3Sum
+  public static Boolean tripletSum(int nums[]) {
+    for (int i = 0; i < nums.length; i++) {
+      if (i > 0 && nums[i] == nums[i - 1]) {
+        continue;
+      }
+
+      for (int j = i + 1; j < nums.length; j++) {
+        for (int k = j + 1; k < nums.length; k++) {
+          int sum = nums[i] + nums[j] + nums[k];
+          if (sum == 0) {
+            if (i != j && i != k && j != k) {
+              System.out.println("( " + nums[i] + " , " + nums[j] + " , " + nums[k] + " )");
+
+              // DISTINCT LOGIC #2
+              while (j + 1 < nums.length && nums[j] == nums[j + 1])
+                j++;
+              while (k + 1 < nums.length && nums[k] == nums[k + 1])
+                k++;
+
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  // Sum of the 4sum
+  public static void quadretSum(int nums[], int target) {
+    int sum = 0;
+    for (int i = 0; i < nums.length; i++) {
+      if (i > 0 && nums[i] == nums[i - 1]) {
+        continue;
+      }
+
+      for (int j = i + 1; j < nums.length; j++) {
+        for (int k = j + 1; k < nums.length; k++) {
+          for (int l = k + 1; l < nums.length; l++) {
+            sum = nums[i] + nums[j] + nums[k] + nums[l];
+            if (sum == target) {
+              System.out.println("( " + nums[i] + " , " + nums[j] + " , " + nums[k] + " , " + nums[l] + " ) ");
+              while (j > 0 && nums[j] == nums[j + 1])
+                j++;
+              while (k > 0 && nums[k] == nums[k + 1])
+                k++;
+              while (l > 0 && nums[l] == nums[l - 1])
+                l++;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  // Container with the maximum height
+  public static int maxArar(int nums[]) {
+    int left = 0;
+    int right = nums.length - 1;
+    int maxArea = 0;
+
+    while (left < right) {
+      int width = right - left;
+      int minArea = Math.min(nums[left], nums[right]);
+      int Area = width * minArea;
+
+      maxArea = Math.max(maxArea, Area);
+
+      if (nums[left] < nums[right]) {
+        left++;
+      } else {
+        right--;
+      }
+
+    }
+
+    return maxArea;
+  }
+
   public static void main(String[] args) {
-    int nums[][] = { { 1, 3, 5, 7 }, { 10, 11, 16, 20 }, { 23, 30, 34, 60 } };
-    int target = 13;
-    System.out.println(searchElement(nums, target));
+    int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+
+    // Arrays.sort(nums);
+    System.out.println(maxArar(height));
   }
 }
