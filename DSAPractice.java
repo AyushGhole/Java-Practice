@@ -269,37 +269,36 @@ public class DSAPractice {
     return maxArea;
   }
 
-  // practise
-  public static boolean practise(int nums[]) {
-    int sum = 0;
-    for (int i = 0; i < nums.length; i++) {
-      if (i > 0 && nums[i] == nums[i - 1]) {
-        continue;
-      }
+  // Permutation number
+  public static void Permutation(int nums[]) {
 
+    // Arrays sort
+    Arrays.sort(nums);
+    // Sorted Arrays
+    System.out.println(Arrays.toString(nums));
+
+    // [1,2,3]
+    for (int i = 0; i < nums.length; i++) {
       for (int j = i + 1; j < nums.length; j++) {
         for (int k = j + 1; k < nums.length; k++) {
-          sum = nums[i] + nums[j] + nums[k];
-          if (sum == 0) {
-            System.out.println("( " + nums[i] + " , " + nums[j] + " , " + nums[k] + " )");
+          if (nums[j] <= nums[k]) {
+            int temp = nums[j];
+            nums[j] = nums[k];
+            nums[k] = temp;
 
-            while (j + 1 < nums.length && nums[j] == nums[j + 1])
-              j++;
-
-            while (k + 1 < nums.length && nums[k] == nums[k + 1])
-              k++;
           }
+          System.out.println("Next : " + Arrays.toString(nums));
+          break;
         }
+
       }
     }
-    return false;
+
   }
 
   public static void main(String[] args) {
-    int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
-    int nums[] = { 2, 0, 2, 1, 1, 0 };
-    Arrays.sort(nums);
-    tripletSum(nums);
-    practise(nums);
+    // int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+    int nums[] = { 2, 3, 1 };
+    Permutation(nums);
   }
 }
